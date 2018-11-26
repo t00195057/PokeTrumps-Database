@@ -1,0 +1,15 @@
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\Poketrumps.exe.config
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\Poketrumps.exe
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\Poketrumps.pdb
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\EntityFramework.dll
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\EntityFramework.xml
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.csprojAssemblyReference.cache
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.Form1.resources
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.Properties.Resources.resources
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.csproj.GenerateResource.cache
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.csproj.CoreCompileInputs.cache
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.csproj.CopyComplete
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.exe
+C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\obj\Debug\Poketrumps.pdb
