@@ -12,9 +12,11 @@ namespace Poketrumps
 {
     public partial class Team : Form
     {
-        public Team()
+        public Team(short TrainerID)
         {
             InitializeComponent();
+            grdTeam.DataSource=
+         
         }
     }
 }

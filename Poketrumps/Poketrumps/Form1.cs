@@ -40,12 +40,15 @@ namespace Poketrumps
             using (PokemonEntities2 context = new PokemonEntities2())
             {
 
-                var max = context.Trainers.DefaultIfEmpty().Max(r => r == null ? 0 : r.TrainerID);
-                int newID = Convert.ToInt16(max)+1;
+                 var max = context.Trainers.DefaultIfEmpty().Max(r => r == null ? 0 : r.TrainerID);
+                 max = Convert.ToInt16(max)+1;
+                
+                short NextID = Convert.ToInt16(max);
+
                 Trainer trainer = new Trainer
                 {
 
-                    TrainerID = Convert.ToInt16(newID),
+                    TrainerID = NextID,
                     TName = Convert.ToString(txtUsername.Text),
                     Password = txtPassword.Text,
                     Email = txtEmail.Text,
@@ -53,22 +56,26 @@ namespace Poketrumps
 
                 };
 
-                var clientidParameter = new SqlParameter
-                {
-                    ParameterName = "TrainerID",
-                    Value = newID
-                };
-                var courseList = context.Database.SqlQuery<Trainer>("exec GetNewPokemon @TrainerID ", clientidParameter).ToList<Trainer>();
-                context.Database
-                    .SqlQuery<Trainer>("getNewPokemon",  clientidParameter);
+      
+             
+                
 
                 context.Trainers.Add(trainer);
+                
                 context.SaveChanges();
+                for (int x = 0; x < 5; x++)
+                {
+                    context.getNewPokemon(NextID);
+                    context.SaveChanges();
+                }
                 this.Hide();
-                var form2 = new Team();
+                var form2 = new Team(NextID);
                 form2.Closed += (s, args) => this.Close();
+             
                 form2.Show();
+              
             }
+          
            
         }
 
@@ -104,6 +111,9 @@ namespace Poketrumps
                 else
                     MessageBox.Show(username+"does not exist in the system create an account");
             }
+
+
+
         }
     }
 }
