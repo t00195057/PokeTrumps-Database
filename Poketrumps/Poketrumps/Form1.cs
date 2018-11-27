@@ -53,7 +53,15 @@ namespace Poketrumps
 
                 };
 
-                
+                var clientidParameter = new SqlParameter
+                {
+                    ParameterName = "TrainerID",
+                    Value = newID
+                };
+                var courseList = context.Database.SqlQuery<Trainer>("exec GetNewPokemon @TrainerID ", clientidParameter).ToList<Trainer>();
+                context.Database
+                    .SqlQuery<Trainer>("getNewPokemon",  clientidParameter);
+
                 context.Trainers.Add(trainer);
                 context.SaveChanges();
                 this.Hide();
@@ -76,7 +84,7 @@ namespace Poketrumps
                 var clientPasswordParameter = new SqlParameter("@Password", password);
 
                 var result = context.Database
-                    .SqlQuery<Trainer>("GetResultsForCampaign @ClientId", clientNameParameter,clientPasswordParameter);
+                    .SqlQuery<Trainer>("dbo.login", clientNameParameter,clientPasswordParameter);
                     
             
             if (context.Trainers.Any(t => t.TName == username)){
