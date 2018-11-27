@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\t00195057\source\repos\Poketrumps\Poketrumps\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

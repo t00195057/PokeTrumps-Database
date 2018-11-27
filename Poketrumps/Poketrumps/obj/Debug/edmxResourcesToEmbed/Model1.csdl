@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PokemonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Battle">
+    <Key>
+      <PropertyRef Name="BattleID" />
+    </Key>
+    <Property Name="BattleID" Type="Int16" Nullable="false" />
+    <Property Name="TrainerID1" Type="Int16" />
+    <Property Name="TrainerID2" Type="Int16" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK_Battle_Trainer" FromRole="Battle" ToRole="Trainer" />
+    <NavigationProperty Name="Trainer1" Relationship="Self.FK_Battle_Trainer1" FromRole="Battle" ToRole="Trainer" />
+    <NavigationProperty Name="Rounds" Relationship="Self.FK_Round_Battle" FromRole="Battle" ToRole="Round" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="TrainerID1" />
+      <PropertyRef Name="TrainerID2" />
+    </Key>
+    <Property Name="TrainerID1" Type="Int16" Nullable="false" />
+    <Property Name="TrainerID2" Type="Int16" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK_Friends_Trainer" FromRole="Friends" ToRole="Trainer" />
+    <NavigationProperty Name="Trainer1" Relationship="Self.FK_Friends_Trainer1" FromRole="Friends" ToRole="Trainer" />
+  </EntityType>
+  <EntityType Name="Pokemon">
+    <Key>
+      <PropertyRef Name="PokemonID" />
+    </Key>
+    <Property Name="PokemonID" Type="Int16" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int16" Nullable="false" />
+    <Property Name="Defence" Type="Int16" Nullable="false" />
+    <Property Name="SpecialAttack" Type="Int16" Nullable="false" />
+    <Property Name="SpecialDefence" Type="Int16" Nullable="false" />
+    <Property Name="Speed" Type="Int16" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="TrainerPokemons" Relationship="Self.FK_TrainerPokemon_Pokemon" FromRole="Pokemon" ToRole="TrainerPokemon" />
+  </EntityType>
+  <EntityType Name="Round">
+    <Key>
+      <PropertyRef Name="RoundID" />
+    </Key>
+    <Property Name="RoundID" Type="Int16" Nullable="false" />
+    <Property Name="BattleID" Type="Int16" Nullable="false" />
+    <Property Name="TrainerPokemonID" Type="Int16" Nullable="false" />
+    <Property Name="Trainer2PokemonID" Type="Int16" Nullable="false" />
+    <Property Name="FirstTrainerID" Type="Int16" Nullable="false" />
+    <Property Name="StatChosen" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="WinnerID" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Battle" Relationship="Self.FK_Round_Battle" FromRole="Round" ToRole="Battle" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="TrainerID" />
+    </Key>
+    <Property Name="TrainerID" Type="Int16" Nullable="false" />
+    <Property Name="TName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Battles" Relationship="Self.FK_Battle_Trainer" FromRole="Trainer" ToRole="Battle" />
+    <NavigationProperty Name="Battles1" Relationship="Self.FK_Battle_Trainer1" FromRole="Trainer" ToRole="Battle" />
+    <NavigationProperty Name="Friends" Relationship="Self.FK_Friends_Trainer" FromRole="Trainer" ToRole="Friends" />
+    <NavigationProperty Name="Friends1" Relationship="Self.FK_Friends_Trainer1" FromRole="Trainer" ToRole="Friends" />
+    <NavigationProperty Name="TrainerPokemons" Relationship="Self.FK_TrainerPokemon_Trainer" FromRole="Trainer" ToRole="TrainerPokemon" />
+  </EntityType>
+  <EntityType Name="TrainerPokemon">
+    <Key>
+      <PropertyRef Name="PokemonID" />
+      <PropertyRef Name="TrainerID" />
+    </Key>
+    <Property Name="PokemonID" Type="Int16" Nullable="false" />
+    <Property Name="TrainerID" Type="Int16" Nullable="false" />
+    <Property Name="Team" Type="Boolean" Nullable="false" />
+    <Property Name="Favourite" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Pokemon" Relationship="Self.FK_TrainerPokemon_Pokemon" FromRole="TrainerPokemon" ToRole="Pokemon" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK_TrainerPokemon_Trainer" FromRole="TrainerPokemon" ToRole="Trainer" />
+  </EntityType>
+  <EntityType Name="View_InsertPokemon">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Attack" />
+      <PropertyRef Name="Defence" />
+      <PropertyRef Name="SpecialAttack" />
+      <PropertyRef Name="SpecialDefence" />
+      <PropertyRef Name="Speed" />
+    </Key>
+    <Property Name="PokemonID" Type="Int16" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int16" Nullable="false" />
+    <Property Name="Defence" Type="Int16" Nullable="false" />
+    <Property Name="SpecialAttack" Type="Int16" Nullable="false" />
+    <Property Name="SpecialDefence" Type="Int16" Nullable="false" />
+    <Property Name="Speed" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_pokemon">
+    <Key>
+      <PropertyRef Name="PokemonID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Attack" />
+      <PropertyRef Name="Defence" />
+      <PropertyRef Name="SpecialAttack" />
+      <PropertyRef Name="SpecialDefence" />
+      <PropertyRef Name="Speed" />
+    </Key>
+    <Property Name="PokemonID" Type="Int16" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int16" Nullable="false" />
+    <Property Name="Defence" Type="Int16" Nullable="false" />
+    <Property Name="SpecialAttack" Type="Int16" Nullable="false" />
+    <Property Name="SpecialDefence" Type="Int16" Nullable="false" />
+    <Property Name="Speed" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_pokemonNEW">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Attack" />
+      <PropertyRef Name="Defence" />
+      <PropertyRef Name="SpecialAttack" />
+      <PropertyRef Name="SpecialDefence" />
+      <PropertyRef Name="Speed" />
+    </Key>
+    <Property Name="PokemonID" Type="Int16" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Attack" Type="Int16" Nullable="false" />
+    <Property Name="Defence" Type="Int16" Nullable="false" />
+    <Property Name="SpecialAttack" Type="Int16" Nullable="false" />
+    <Property Name="SpecialDefence" Type="Int16" Nullable="false" />
+    <Property Name="Speed" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_round">
+    <Key>
+      <PropertyRef Name="BattleID" />
+      <PropertyRef Name="TrainerPokemonID" />
+      <PropertyRef Name="Trainer2PokemonID" />
+      <PropertyRef Name="FirstTrainerID" />
+      <PropertyRef Name="StatChosen" />
+      <PropertyRef Name="WinnerID" />
+    </Key>
+    <Property Name="BattleID" Type="Int16" Nullable="false" />
+    <Property Name="TrainerPokemonID" Type="Int16" Nullable="false" />
+    <Property Name="Trainer2PokemonID" Type="Int16" Nullable="false" />
+    <Property Name="FirstTrainerID" Type="Int16" Nullable="false" />
+    <Property Name="StatChosen" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="WinnerID" Type="Int16" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Battle_Trainer">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+    <End Role="Battle" Type="Self.Battle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerID" />
+      </Principal>
+      <Dependent Role="Battle">
+        <PropertyRef Name="TrainerID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Battle_Trainer1">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+    <End Role="Battle" Type="Self.Battle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerID" />
+      </Principal>
+      <Dependent Role="Battle">
+        <PropertyRef Name="TrainerID2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Round_Battle">
+    <End Role="Battle" Type="Self.Battle" Multiplicity="1" />
+    <End Role="Round" Type="Self.Round" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Battle">
+        <PropertyRef Name="BattleID" />
+      </Principal>
+      <Dependent Role="Round">
+        <PropertyRef Name="BattleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Friends_Trainer">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerID" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="TrainerID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Friends_Trainer1">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerID" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="TrainerID2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrainerPokemon_Pokemon">
+    <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1" />
+    <End Role="TrainerPokemon" Type="Self.TrainerPokemon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pokemon">
+        <PropertyRef Name="PokemonID" />
+      </Principal>
+      <Dependent Role="TrainerPokemon">
+        <PropertyRef Name="PokemonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrainerPokemon_Trainer">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+    <End Role="TrainerPokemon" Type="Self.TrainerPokemon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerID" />
+      </Principal>
+      <Dependent Role="TrainerPokemon">
+        <PropertyRef Name="TrainerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PokemonEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Battles" EntityType="Self.Battle" />
+    <EntitySet Name="Friends" EntityType="Self.Friend" />
+    <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
+    <EntitySet Name="Rounds" EntityType="Self.Round" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+    <EntitySet Name="TrainerPokemons" EntityType="Self.TrainerPokemon" />
+    <EntitySet Name="View_InsertPokemon" EntityType="Self.View_InsertPokemon" />
+    <EntitySet Name="view_pokemon" EntityType="Self.view_pokemon" />
+    <EntitySet Name="view_pokemonNEW" EntityType="Self.view_pokemonNEW" />
+    <EntitySet Name="view_round" EntityType="Self.view_round" />
+    <AssociationSet Name="FK_Battle_Trainer" Association="Self.FK_Battle_Trainer">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="Battle" EntitySet="Battles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Battle_Trainer1" Association="Self.FK_Battle_Trainer1">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="Battle" EntitySet="Battles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Round_Battle" Association="Self.FK_Round_Battle">
+      <End Role="Battle" EntitySet="Battles" />
+      <End Role="Round" EntitySet="Rounds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Friends_Trainer" Association="Self.FK_Friends_Trainer">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Friends_Trainer1" Association="Self.FK_Friends_Trainer1">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrainerPokemon_Pokemon" Association="Self.FK_TrainerPokemon_Pokemon">
+      <End Role="Pokemon" EntitySet="Pokemons" />
+      <End Role="TrainerPokemon" EntitySet="TrainerPokemons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrainerPokemon_Trainer" Association="Self.FK_TrainerPokemon_Trainer">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="TrainerPokemon" EntitySet="TrainerPokemons" />
+    </AssociationSet>
+    <FunctionImport Name="addFavourate">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+      <Parameter Name="PokemonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="checkBattleWinner">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+      <Parameter Name="BattleID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="checkFivePokemon">
+      <Parameter Name="trainerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="choosePokemon">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="flipCoin" />
+    <FunctionImport Name="getEnemyStat">
+      <Parameter Name="statchosen" Mode="In" Type="String" />
+      <Parameter Name="Trainer2PokemonID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="getNewPokemon">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="getRoundWinner">
+      <Parameter Name="Stat1" Mode="In" Type="Int16" />
+      <Parameter Name="Stat2" Mode="In" Type="Int16" />
+      <Parameter Name="Trainer1ID" Mode="In" Type="Int16" />
+      <Parameter Name="Trainer2ID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="getStatChosen">
+      <Parameter Name="statchosen" Mode="In" Type="String" />
+      <Parameter Name="Trainer2PokemonID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="getValidEmail">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getValidTName">
+      <Parameter Name="TName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="initiateBattle">
+      <Parameter Name="TrainerID1" Mode="In" Type="Int16" />
+      <Parameter Name="TrainerID2" Mode="In" Type="Int16" />
+      <Parameter Name="BattleID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="initiateRound">
+      <Parameter Name="TrainerID1" Mode="In" Type="Int16" />
+      <Parameter Name="TrainerID2" Mode="In" Type="Int16" />
+      <Parameter Name="BattleID" Mode="In" Type="Int16" />
+      <Parameter Name="Pokemon1ID" Mode="In" Type="Int16" />
+      <Parameter Name="Pokemon2ID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="insertRoundWinner">
+      <Parameter Name="BattleID" Mode="In" Type="Int32" />
+      <Parameter Name="WinnerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadPokemonImage">
+      <Parameter Name="PokemonName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="maxFavourites">
+      <Parameter Name="trainerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="maxRounds">
+      <Parameter Name="BattleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="removeFavourate">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+      <Parameter Name="PokemonId" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PokemonModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PokemonModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="updateTeam">
+      <Parameter Name="TrainerID" Mode="In" Type="Int16" />
+      <Parameter Name="PokemonOff" Mode="In" Type="Int16" />
+      <Parameter Name="PokemonOn" Mode="In" Type="Int16" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

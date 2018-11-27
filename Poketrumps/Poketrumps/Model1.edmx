@@ -675,7 +675,7 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PokemonEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PokemonEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Battles" EntityType="Self.Battle" />
           <EntitySet Name="Friends" EntityType="Self.Friend" />
           <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
@@ -834,7 +834,7 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities">
+        <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities2">
           <EntitySetMapping Name="Battles">
             <EntityTypeMapping TypeName="PokemonModel.Battle">
               <MappingFragment StoreEntitySet="Battle">

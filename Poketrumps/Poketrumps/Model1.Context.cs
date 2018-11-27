@@ -15,10 +15,10 @@ namespace Poketrumps
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PokemonEntities : DbContext
+    public partial class PokemonEntities2 : DbContext
     {
-        public PokemonEntities()
-            : base("PokemonEntities")
+        public PokemonEntities2()
+            : base("name=PokemonEntities2")
         {
         }
     

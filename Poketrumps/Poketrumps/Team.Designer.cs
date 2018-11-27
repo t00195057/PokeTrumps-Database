@@ -171,7 +171,6 @@
             this.ClientSize = new System.Drawing.Size(1019, 450);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Team";
             this.Text = "Team";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

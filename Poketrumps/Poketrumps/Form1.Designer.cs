@@ -35,14 +35,14 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txt = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.grdLogin = new System.Windows.Forms.GroupBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtUsernamePassword = new System.Windows.Forms.TextBox();
+            this.txtLoginPassword = new System.Windows.Forms.TextBox();
             this.txtLoginUsername = new System.Windows.Forms.TextBox();
             this.grdCreateAccount.SuspendLayout();
             this.grdLogin.SuspendLayout();
@@ -74,9 +74,9 @@
             this.grdCreateAccount.Controls.Add(this.lblEmail);
             this.grdCreateAccount.Controls.Add(this.lblPassword);
             this.grdCreateAccount.Controls.Add(this.lblUsername);
-            this.grdCreateAccount.Controls.Add(this.textBox2);
-            this.grdCreateAccount.Controls.Add(this.textBox1);
-            this.grdCreateAccount.Controls.Add(this.txt);
+            this.grdCreateAccount.Controls.Add(this.txtEmail);
+            this.grdCreateAccount.Controls.Add(this.txtPassword);
+            this.grdCreateAccount.Controls.Add(this.txtUsername);
             this.grdCreateAccount.Location = new System.Drawing.Point(51, 147);
             this.grdCreateAccount.Name = "grdCreateAccount";
             this.grdCreateAccount.Size = new System.Drawing.Size(296, 269);
@@ -93,6 +93,7 @@
             this.btnCreateAccount.TabIndex = 8;
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // lblEmail
             // 
@@ -121,33 +122,33 @@
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "Username";
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(162, 178);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtEmail.Location = new System.Drawing.Point(162, 178);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 2;
             // 
-            // textBox1
+            // txtPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(162, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtPassword.Location = new System.Drawing.Point(162, 124);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 1;
             // 
-            // txt
+            // txtUsername
             // 
-            this.txt.Location = new System.Drawing.Point(162, 64);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(100, 20);
-            this.txt.TabIndex = 0;
+            this.txtUsername.Location = new System.Drawing.Point(162, 64);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtUsername.TabIndex = 0;
             // 
             // grdLogin
             // 
             this.grdLogin.Controls.Add(this.btnLogin);
             this.grdLogin.Controls.Add(this.label1);
             this.grdLogin.Controls.Add(this.label2);
-            this.grdLogin.Controls.Add(this.txtUsernamePassword);
+            this.grdLogin.Controls.Add(this.txtLoginPassword);
             this.grdLogin.Controls.Add(this.txtLoginUsername);
             this.grdLogin.Location = new System.Drawing.Point(391, 147);
             this.grdLogin.Name = "grdLogin";
@@ -165,6 +166,7 @@
             this.btnLogin.TabIndex = 10;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label1
             // 
@@ -184,12 +186,12 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Username";
             // 
-            // txtUsernamePassword
+            // txtLoginPassword
             // 
-            this.txtUsernamePassword.Location = new System.Drawing.Point(151, 124);
-            this.txtUsernamePassword.Name = "txtUsernamePassword";
-            this.txtUsernamePassword.Size = new System.Drawing.Size(100, 20);
-            this.txtUsernamePassword.TabIndex = 7;
+            this.txtLoginPassword.Location = new System.Drawing.Point(151, 124);
+            this.txtLoginPassword.Name = "txtLoginPassword";
+            this.txtLoginPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtLoginPassword.TabIndex = 7;
             // 
             // txtLoginUsername
             // 
@@ -226,14 +228,14 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox txt;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.GroupBox grdLogin;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtUsernamePassword;
+        private System.Windows.Forms.TextBox txtLoginPassword;
         private System.Windows.Forms.TextBox txtLoginUsername;
     }
 }
