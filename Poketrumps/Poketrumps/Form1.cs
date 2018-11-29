@@ -37,7 +37,7 @@ namespace Poketrumps
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
      
-            using (PokemonEntities3 context = new PokemonEntities3())
+            using (PokemonEntities5 context = new PokemonEntities5())
             {
 
                  var max = context.Trainers.DefaultIfEmpty().Max(r => r == null ? 0 : r.TrainerID);
@@ -81,7 +81,7 @@ namespace Poketrumps
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            using (PokemonEntities3 context = new PokemonEntities3())
+            using (PokemonEntities5 context = new PokemonEntities5())
             {
                 var username = Convert.ToString(txtLoginUsername.Text);
                 var password = Convert.ToString(txtLoginPassword.Text);
@@ -100,13 +100,10 @@ namespace Poketrumps
                     }
                     else
                     {
-                       
-                        
-
-                        var id = context.Login(username, password);
-                        short shortId = Convert.ToInt16(id);
+                        MessageBox.Show(Convert.ToString(result));                      
+                        short shortId = Convert.ToInt16(77);
                         this.Hide();
-                        var form2 = new Team(shortId);
+                        var form2 = new Team(77);
                         form2.Closed += (s, args) => this.Close();
                         form2.Show();
                     }

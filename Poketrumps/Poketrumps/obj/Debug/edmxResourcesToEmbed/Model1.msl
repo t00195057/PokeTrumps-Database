@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities3">
+  <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities5">
     <EntitySetMapping Name="Battles">
       <EntityTypeMapping TypeName="PokemonModel.Battle">
         <MappingFragment StoreEntitySet="Battle">
@@ -138,12 +138,14 @@
     <FunctionImportMapping FunctionImportName="getCollection" FunctionName="PokemonModel.Store.getCollection">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PokemonModel.getCollection_Result">
+          <ScalarProperty Name="PokemonID" ColumnName="PokemonID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="Defence" ColumnName="Defence" />
           <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
           <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
           <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -154,12 +156,14 @@
     <FunctionImportMapping FunctionImportName="getTeam" FunctionName="PokemonModel.Store.getTeam">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PokemonModel.getTeam_Result">
+          <ScalarProperty Name="PokemonID" ColumnName="PokemonID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Attack" ColumnName="Attack" />
           <ScalarProperty Name="Defence" ColumnName="Defence" />
           <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
           <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
           <ScalarProperty Name="Speed" ColumnName="Speed" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -685,7 +685,7 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PokemonEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PokemonEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Battles" EntityType="Self.Battle" />
           <EntitySet Name="Friends" EntityType="Self.Friend" />
           <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
@@ -788,7 +788,7 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
           <FunctionImport Name="LoadPokemonImage">
             <Parameter Name="PokemonName" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="Login">
+          <FunctionImport Name="Login" ReturnType="Collection(Int16)">
             <Parameter Name="TName" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -839,20 +839,24 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getCollection_Result">
+          <Property Type="Int16" Name="PokemonID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="Int16" Name="Attack" Nullable="false" />
           <Property Type="Int16" Name="Defence" Nullable="false" />
           <Property Type="Int16" Name="SpecialAttack" Nullable="false" />
           <Property Type="Int16" Name="SpecialDefence" Nullable="false" />
           <Property Type="Int16" Name="Speed" Nullable="false" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="getTeam_Result">
+          <Property Type="Int16" Name="PokemonID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="Int16" Name="Attack" Nullable="false" />
           <Property Type="Int16" Name="Defence" Nullable="false" />
           <Property Type="Int16" Name="SpecialAttack" Nullable="false" />
           <Property Type="Int16" Name="SpecialDefence" Nullable="false" />
           <Property Type="Int16" Name="Speed" Nullable="false" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -870,7 +874,7 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities3">
+        <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities5">
           <EntitySetMapping Name="Battles">
             <EntityTypeMapping TypeName="PokemonModel.Battle">
               <MappingFragment StoreEntitySet="Battle">
@@ -1008,12 +1012,14 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
           <FunctionImportMapping FunctionImportName="getCollection" FunctionName="PokemonModel.Store.getCollection">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PokemonModel.getCollection_Result">
+                <ScalarProperty Name="PokemonID" ColumnName="PokemonID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Attack" ColumnName="Attack" />
                 <ScalarProperty Name="Defence" ColumnName="Defence" />
                 <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
                 <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
                 <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1024,12 +1030,14 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
           <FunctionImportMapping FunctionImportName="getTeam" FunctionName="PokemonModel.Store.getTeam">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PokemonModel.getTeam_Result">
+                <ScalarProperty Name="PokemonID" ColumnName="PokemonID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Attack" ColumnName="Attack" />
                 <ScalarProperty Name="Defence" ColumnName="Defence" />
                 <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
                 <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
                 <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

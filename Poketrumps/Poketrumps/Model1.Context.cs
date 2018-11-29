@@ -15,10 +15,10 @@ namespace Poketrumps
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PokemonEntities3 : DbContext
+    public partial class PokemonEntities5 : DbContext
     {
-        public PokemonEntities3()
-            : base("name=PokemonEntities3")
+        public PokemonEntities5()
+            : base("name=PokemonEntities5")
         {
         }
     
@@ -244,7 +244,7 @@ namespace Poketrumps
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LoadPokemonImage", pokemonNameParameter);
         }
     
-        public virtual int Login(string tName, string password)
+        public virtual ObjectResult<Nullable<short>> Login(string tName, string password)
         {
             var tNameParameter = tName != null ?
                 new ObjectParameter("TName", tName) :
@@ -254,7 +254,7 @@ namespace Poketrumps
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Login", tNameParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<short>>("Login", tNameParameter, passwordParameter);
         }
     
         public virtual int maxFavourites(Nullable<int> trainerID)

@@ -13,11 +13,13 @@ namespace Poketrumps
     
     public partial class getTeam_Result
     {
+        public short PokemonID { get; set; }
         public string Name { get; set; }
         public short Attack { get; set; }
         public short Defence { get; set; }
         public short SpecialAttack { get; set; }
         public short SpecialDefence { get; set; }
         public short Speed { get; set; }
+        public byte[] Image { get; set; }
     }
 }

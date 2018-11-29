@@ -15,55 +15,37 @@ namespace Poketrumps
         
         public Team(short TrainerID)
         {
-            using (PokemonEntities3 context = new PokemonEntities3())
+            using (PokemonEntities5 context = new PokemonEntities5())
             {
-                txtID.Text = Convert.ToString(TrainerID);
                 InitializeComponent();
+                txtID.Text = Convert.ToString(TrainerID);
                 grdTeam.DataSource = context.getTeam(TrainerID);
                 grdTeam.Rows[0].Cells[0].Selected = false;
                 grdCollection.DataSource = context.getCollection(TrainerID);
+                if(grdCollection.Rows.Count>=2)
                 grdCollection.Rows[0].Cells[0].Selected = false;
             }
         }
 
-        private void grdCollection_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (grdTeam.CurrentCell.Value != null)
-            {
-
-              
-
-                short PokIn = Convert.ToInt16(grdCollection.Rows[grdCollection.CurrentCell.RowIndex].Cells[0].Value);
-               
-                short PokOut = Convert.ToInt16(grdTeam.Rows[grdTeam.CurrentCell.RowIndex].Cells[0].Value);
-              
-                short trainerID = Convert.ToInt16(txtID.Text);
-                using (PokemonEntities3 context = new PokemonEntities3())
-                {
-                    context.updateTeam(trainerID,PokOut, PokIn);
-
-                }
-            }
-        }
-
-        private void grdTeam_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (grdTeam.CurrentCell.Value != null)
-            {
-
-
-
                 short PokIn = Convert.ToInt16(grdCollection.Rows[grdCollection.CurrentCell.RowIndex].Cells[0].Value);
 
                 short PokOut = Convert.ToInt16(grdTeam.Rows[grdTeam.CurrentCell.RowIndex].Cells[0].Value);
 
                 short trainerID = Convert.ToInt16(txtID.Text);
-                using (PokemonEntities3 context = new PokemonEntities3())
+                using (PokemonEntities5 context = new PokemonEntities5())
                 {
                     context.updateTeam(trainerID, PokOut, PokIn);
+                    grdTeam.DataSource = context.getTeam(Convert.ToInt16(txtID.Text));
+                    grdTeam.Rows[0].Cells[0].Selected = false;
+                    grdCollection.DataSource = context.getCollection(Convert.ToInt16(txtID.Text));
+                    if (grdCollection.Rows.Count >= 2)
+                        grdCollection.Rows[0].Cells[0].Selected = false;
 
-                }
+                
             }
         }
     }
