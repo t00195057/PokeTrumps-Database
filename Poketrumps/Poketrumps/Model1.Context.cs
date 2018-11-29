@@ -15,10 +15,10 @@ namespace Poketrumps
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PokemonEntities2 : DbContext
+    public partial class PokemonEntities3 : DbContext
     {
-        public PokemonEntities2()
-            : base("name=PokemonEntities2")
+        public PokemonEntities3()
+            : base("name=PokemonEntities3")
         {
         }
     
@@ -88,6 +88,15 @@ namespace Poketrumps
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("flipCoin");
         }
     
+        public virtual ObjectResult<getCollection_Result> getCollection(Nullable<short> tID)
+        {
+            var tIDParameter = tID.HasValue ?
+                new ObjectParameter("TID", tID) :
+                new ObjectParameter("TID", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getCollection_Result>("getCollection", tIDParameter);
+        }
+    
         public virtual int getEnemyStat(string statchosen, Nullable<short> trainer2PokemonID)
         {
             var statchosenParameter = statchosen != null ?
@@ -142,6 +151,15 @@ namespace Poketrumps
                 new ObjectParameter("Trainer2PokemonID", typeof(short));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getStatChosen", statchosenParameter, trainer2PokemonIDParameter);
+        }
+    
+        public virtual ObjectResult<getTeam_Result> getTeam(Nullable<short> tID)
+        {
+            var tIDParameter = tID.HasValue ?
+                new ObjectParameter("TID", tID) :
+                new ObjectParameter("TID", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getTeam_Result>("getTeam", tIDParameter);
         }
     
         public virtual int getValidEmail(string email)
@@ -224,6 +242,19 @@ namespace Poketrumps
                 new ObjectParameter("PokemonName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LoadPokemonImage", pokemonNameParameter);
+        }
+    
+        public virtual int Login(string tName, string password)
+        {
+            var tNameParameter = tName != null ?
+                new ObjectParameter("TName", tName) :
+                new ObjectParameter("TName", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Login", tNameParameter, passwordParameter);
         }
     
         public virtual int maxFavourites(Nullable<int> trainerID)

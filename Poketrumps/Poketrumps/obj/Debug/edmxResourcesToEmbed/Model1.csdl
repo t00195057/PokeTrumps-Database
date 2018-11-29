@@ -239,7 +239,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PokemonEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PokemonEntities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Battles" EntityType="Self.Battle" />
     <EntitySet Name="Friends" EntityType="Self.Friend" />
     <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
@@ -294,6 +294,9 @@
       <Parameter Name="TrainerID" Mode="In" Type="Int16" />
     </FunctionImport>
     <FunctionImport Name="flipCoin" />
+    <FunctionImport Name="getCollection" ReturnType="Collection(PokemonModel.getCollection_Result)">
+      <Parameter Name="TID" Mode="In" Type="Int16" />
+    </FunctionImport>
     <FunctionImport Name="getEnemyStat">
       <Parameter Name="statchosen" Mode="In" Type="String" />
       <Parameter Name="Trainer2PokemonID" Mode="In" Type="Int16" />
@@ -310,6 +313,9 @@
     <FunctionImport Name="getStatChosen">
       <Parameter Name="statchosen" Mode="In" Type="String" />
       <Parameter Name="Trainer2PokemonID" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="getTeam" ReturnType="Collection(PokemonModel.getTeam_Result)">
+      <Parameter Name="TID" Mode="In" Type="Int16" />
     </FunctionImport>
     <FunctionImport Name="getValidEmail">
       <Parameter Name="Email" Mode="In" Type="String" />
@@ -335,6 +341,10 @@
     </FunctionImport>
     <FunctionImport Name="LoadPokemonImage">
       <Parameter Name="PokemonName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Login">
+      <Parameter Name="TName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="maxFavourites">
       <Parameter Name="trainerID" Mode="In" Type="Int32" />
@@ -382,6 +392,22 @@
       <Parameter Name="PokemonOn" Mode="In" Type="Int16" />
     </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="getCollection_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int16" Name="Attack" Nullable="false" />
+    <Property Type="Int16" Name="Defence" Nullable="false" />
+    <Property Type="Int16" Name="SpecialAttack" Nullable="false" />
+    <Property Type="Int16" Name="SpecialDefence" Nullable="false" />
+    <Property Type="Int16" Name="Speed" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getTeam_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int16" Name="Attack" Nullable="false" />
+    <Property Type="Int16" Name="Defence" Nullable="false" />
+    <Property Type="Int16" Name="SpecialAttack" Nullable="false" />
+    <Property Type="Int16" Name="SpecialDefence" Nullable="false" />
+    <Property Type="Int16" Name="Speed" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
     <Property Type="Binary" Name="definition" Nullable="true" />

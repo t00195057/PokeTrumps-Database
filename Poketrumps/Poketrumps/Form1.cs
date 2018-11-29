@@ -37,7 +37,7 @@ namespace Poketrumps
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
      
-            using (PokemonEntities2 context = new PokemonEntities2())
+            using (PokemonEntities3 context = new PokemonEntities3())
             {
 
                  var max = context.Trainers.DefaultIfEmpty().Max(r => r == null ? 0 : r.TrainerID);
@@ -81,29 +81,32 @@ namespace Poketrumps
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            using (PokemonEntities2 context = new PokemonEntities2())
+            using (PokemonEntities3 context = new PokemonEntities3())
             {
                 var username = Convert.ToString(txtLoginUsername.Text);
                 var password = Convert.ToString(txtLoginPassword.Text);
                 //https://stackoverflow.com/questions/1802286/best-way-to-check-if-object-exists-in-entity-framework
 
-                var clientNameParameter = new SqlParameter("@Tname", username);
-                var clientPasswordParameter = new SqlParameter("@Password", password);
+               
 
-                var result = context.Database
-                    .SqlQuery<Trainer>("dbo.login", clientNameParameter,clientPasswordParameter);
+                var result = context.Login(username, password);
                     
             
             if (context.Trainers.Any(t => t.TName == username)){
-                    if (result != null)
+                    if (result == null)
                     {
                         MessageBox.Show(username + "does not use the password you have entered");
                         txtLoginPassword.Clear();
                     }
                     else
                     {
+                       
+                        
+
+                        var id = context.Login(username, password);
+                        short shortId = Convert.ToInt16(id);
                         this.Hide();
-                        var form2 = new Team();
+                        var form2 = new Team(shortId);
                         form2.Closed += (s, args) => this.Close();
                         form2.Show();
                     }

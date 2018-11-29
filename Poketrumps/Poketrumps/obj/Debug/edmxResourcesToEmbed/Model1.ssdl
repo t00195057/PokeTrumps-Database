@@ -259,6 +259,9 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
   </Function>
   <Function Name="flipCoin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="getCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="smallint" Mode="In" />
+  </Function>
   <Function Name="getEnemyStat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="statchosen" Type="nvarchar" Mode="In" />
     <Parameter Name="Trainer2PokemonID" Type="smallint" Mode="In" />
@@ -275,6 +278,9 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
   <Function Name="getStatChosen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="statchosen" Type="nvarchar" Mode="In" />
     <Parameter Name="Trainer2PokemonID" Type="smallint" Mode="In" />
+  </Function>
+  <Function Name="getTeam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TID" Type="smallint" Mode="In" />
   </Function>
   <Function Name="getValidEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Email" Type="varchar" Mode="In" />
@@ -300,6 +306,10 @@ warning 6013: The table/view 'Pokemon.dbo.view_Trainer2WinCheck' does not have a
   </Function>
   <Function Name="LoadPokemonImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PokemonName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
   </Function>
   <Function Name="maxFavourites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="trainerID" Type="int" Mode="In" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities2">
+  <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities3">
     <EntitySetMapping Name="Battles">
       <EntityTypeMapping TypeName="PokemonModel.Battle">
         <MappingFragment StoreEntitySet="Battle">
@@ -135,16 +135,41 @@
     <FunctionImportMapping FunctionImportName="checkFivePokemon" FunctionName="PokemonModel.Store.checkFivePokemon" />
     <FunctionImportMapping FunctionImportName="choosePokemon" FunctionName="PokemonModel.Store.choosePokemon" />
     <FunctionImportMapping FunctionImportName="flipCoin" FunctionName="PokemonModel.Store.flipCoin" />
+    <FunctionImportMapping FunctionImportName="getCollection" FunctionName="PokemonModel.Store.getCollection">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PokemonModel.getCollection_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Defence" ColumnName="Defence" />
+          <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
+          <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="getEnemyStat" FunctionName="PokemonModel.Store.getEnemyStat" />
     <FunctionImportMapping FunctionImportName="getNewPokemon" FunctionName="PokemonModel.Store.getNewPokemon" />
     <FunctionImportMapping FunctionImportName="getRoundWinner" FunctionName="PokemonModel.Store.getRoundWinner" />
     <FunctionImportMapping FunctionImportName="getStatChosen" FunctionName="PokemonModel.Store.getStatChosen" />
+    <FunctionImportMapping FunctionImportName="getTeam" FunctionName="PokemonModel.Store.getTeam">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PokemonModel.getTeam_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Attack" ColumnName="Attack" />
+          <ScalarProperty Name="Defence" ColumnName="Defence" />
+          <ScalarProperty Name="SpecialAttack" ColumnName="SpecialAttack" />
+          <ScalarProperty Name="SpecialDefence" ColumnName="SpecialDefence" />
+          <ScalarProperty Name="Speed" ColumnName="Speed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="getValidEmail" FunctionName="PokemonModel.Store.getValidEmail" />
     <FunctionImportMapping FunctionImportName="getValidTName" FunctionName="PokemonModel.Store.getValidTName" />
     <FunctionImportMapping FunctionImportName="initiateBattle" FunctionName="PokemonModel.Store.initiateBattle" />
     <FunctionImportMapping FunctionImportName="initiateRound" FunctionName="PokemonModel.Store.initiateRound" />
     <FunctionImportMapping FunctionImportName="insertRoundWinner" FunctionName="PokemonModel.Store.insertRoundWinner" />
     <FunctionImportMapping FunctionImportName="LoadPokemonImage" FunctionName="PokemonModel.Store.LoadPokemonImage" />
+    <FunctionImportMapping FunctionImportName="Login" FunctionName="PokemonModel.Store.Login" />
     <FunctionImportMapping FunctionImportName="maxFavourites" FunctionName="PokemonModel.Store.maxFavourites" />
     <FunctionImportMapping FunctionImportName="maxRounds" FunctionName="PokemonModel.Store.maxRounds" />
     <FunctionImportMapping FunctionImportName="removeFavourate" FunctionName="PokemonModel.Store.removeFavourate" />
