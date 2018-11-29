@@ -49,7 +49,7 @@ namespace Poketrumps
                 {
 
                     TrainerID = NextID,
-                    TName = Convert.ToString(txtUsername.Text),
+                    TName = txtUsername.Text,
                     Password = txtPassword.Text,
                     Email = txtEmail.Text,
                     CreationDate = DateTime.Now

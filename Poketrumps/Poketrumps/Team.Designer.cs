@@ -43,7 +43,7 @@
             this.grdCollection.Name = "grdCollection";
             this.grdCollection.Size = new System.Drawing.Size(921, 161);
             this.grdCollection.TabIndex = 1;
-            this.grdCollection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCollection_CellContentClick);
+            this.grdCollection.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCollection_CellClick);
             // 
             // txtID
             // 
@@ -60,6 +60,7 @@
             this.grdTeam.Name = "grdTeam";
             this.grdTeam.Size = new System.Drawing.Size(921, 150);
             this.grdTeam.TabIndex = 3;
+            this.grdTeam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTeam_CellClick);
             // 
             // Team
             // 

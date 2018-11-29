@@ -17,17 +17,54 @@ namespace Poketrumps
         {
             using (PokemonEntities3 context = new PokemonEntities3())
             {
+                txtID.Text = Convert.ToString(TrainerID);
                 InitializeComponent();
-                grdTeam.DataSource = context.getTeam(77);
+                grdTeam.DataSource = context.getTeam(TrainerID);
                 grdTeam.Rows[0].Cells[0].Selected = false;
-                grdCollection.DataSource = context.getCollection(77);
+                grdCollection.DataSource = context.getCollection(TrainerID);
                 grdCollection.Rows[0].Cells[0].Selected = false;
             }
         }
 
-        private void grdCollection_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grdCollection_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdTeam.CurrentCell.Value != null)
+            {
+
+              
+
+                short PokIn = Convert.ToInt16(grdCollection.Rows[grdCollection.CurrentCell.RowIndex].Cells[0].Value);
+               
+                short PokOut = Convert.ToInt16(grdTeam.Rows[grdTeam.CurrentCell.RowIndex].Cells[0].Value);
+              
+                short trainerID = Convert.ToInt16(txtID.Text);
+                using (PokemonEntities3 context = new PokemonEntities3())
+                {
+                    context.updateTeam(trainerID,PokOut, PokIn);
+
+                }
+            }
+        }
+
+        private void grdTeam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (grdTeam.CurrentCell.Value != null)
+            {
+
+
+
+                short PokIn = Convert.ToInt16(grdCollection.Rows[grdCollection.CurrentCell.RowIndex].Cells[0].Value);
+
+                short PokOut = Convert.ToInt16(grdTeam.Rows[grdTeam.CurrentCell.RowIndex].Cells[0].Value);
+
+                short trainerID = Convert.ToInt16(txtID.Text);
+                using (PokemonEntities3 context = new PokemonEntities3())
+                {
+                    context.updateTeam(trainerID, PokOut, PokIn);
+
+                }
+            }
         }
     }
 }
