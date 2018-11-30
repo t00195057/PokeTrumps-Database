@@ -48,5 +48,16 @@ namespace Poketrumps
                 
             }
         }
+
+        private void btnBattle_Click(object sender, EventArgs e)
+        {
+            var TrainerID = Convert.ToInt16(txtID.Text);
+            this.Hide();
+            var form2 = new battlePage(TrainerID);
+            
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+
+        }
     }
 }

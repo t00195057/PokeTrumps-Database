@@ -100,7 +100,7 @@ namespace Poketrumps
                     }
                     else
                     {
-                        MessageBox.Show(Convert.ToString(result));                      
+                                      
                         short shortId = Convert.ToInt16(77);
                         this.Hide();
                         var form2 = new Team(77);

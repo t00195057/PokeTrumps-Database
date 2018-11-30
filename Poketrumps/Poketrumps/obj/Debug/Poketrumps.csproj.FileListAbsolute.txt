@@ -29,3 +29,4 @@ C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\bi
 C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\bin\Debug\EntityFramework.xml
 C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\obj\Debug\Poketrumps.csproj.CopyComplete
+C:\Users\t00195057\Documents\GitHub\PokeTrumps-Database\Poketrumps\Poketrumps\obj\Debug\Poketrumps.battlePage.resources
