@@ -60,27 +60,69 @@ namespace Poketrumps
 
         private void btnChoosePokemon_Click(object sender, EventArgs e)
         {
-            short AIPok = Convert.ToInt16(grdAiTeam.Rows[0].Cells[0].Value);
-            short TrainerPok = Convert.ToInt16(grdTrainerTeam.Rows[grdTrainerTeam.CurrentCell.RowIndex].Cells[0].Value);
+            if (grdTrainerTeam.CurrentCell != null)
+            {
+                short AIPok = Convert.ToInt16(grdAiTeam.Rows[0].Cells[0].Value);
+                short TrainerPok = Convert.ToInt16(grdTrainerTeam.Rows[grdTrainerTeam.CurrentCell.RowIndex].Cells[0].Value);
+            
             using (PokemonEntities5 context = new PokemonEntities5())
             {
                 context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
                 context.SaveChanges();
-                //grdTrainerTeam.Rows.Remove([grdTrainerTeam.CurrentCell.RowIndex]);
-                //grdAiTeam.Rows.RemoveAt(1);
-                grdAiTeam.Rows[0].Equals(null); 
+            
+           
+       
+                int cell = (grdTrainerTeam.CurrentCell.RowIndex);
+                grdTrainerTeam.CurrentCell = null;
+                grdAiTeam.CurrentCell = null;
+                grdAiTeam.Rows[Convert.ToInt16(txtRound.Text)-1].Visible = false;
+                txtRound.Text = Convert.ToString(Convert.ToInt16(txtRound.Text) + 1);
+                grdTrainerTeam.Rows[cell].Visible = false;
+                    var trainerID = Convert.ToInt16(txt.Text);
+                    var BattleID = Convert.ToInt16(txtBattleID.Text);
+                    var AiID = Convert.ToInt16(txtAI.Text);
+                    var TrainerScore = context.Rounds
+                    .Where(t => t.WinnerID == trainerID && t.BattleID == BattleID)
+                    .Select(t => new { t.RoundID }).Count();
 
-                if (grdTrainerTeam.Rows.Count < 1)
+                    var AiScore = context.Rounds
+                  .Where(t => t.WinnerID == AiID && t.BattleID == BattleID)
+                  .Select(t => new { t.RoundID }).Count();
+
+                    if ( TrainerScore>=3|| AiScore>= 3|| Convert.ToInt16(txtRound.Text) > 5)
             {
+
+                
+                    context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
+                    context.SaveChanges();
+                
                 MessageBox.Show("game over");
-                if(context.checkBattleWinner(Convert.ToInt16(txt.Text), Convert.ToInt16(txtBattleID.Text)) >= 3)
+
+                if(TrainerScore>= 3)
                     {
                         MessageBox.Show("Congradulations You Won");
                         context.getNewPokemon(Convert.ToInt16(txt.Text));
                         context.SaveChanges();
                     }
+                        this.Hide();
+                        var form = new Team(Convert.ToInt16(txt.Text));
+
+                        form.Closed += (s, args) => this.Close();
+                        form.Show();
+
+                    }
             }
             }
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new Form1();
+
+            form.Closed += (s, args) => this.Close();
+            form.Show();
+        }
     }
 }
+

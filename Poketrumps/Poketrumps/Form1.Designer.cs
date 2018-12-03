@@ -44,8 +44,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtLoginPassword = new System.Windows.Forms.TextBox();
             this.txtLoginUsername = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grdCreateAccount.SuspendLayout();
             this.grdLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDisplayCreateAccount
@@ -200,11 +202,21 @@
             this.txtLoginUsername.Size = new System.Drawing.Size(100, 20);
             this.txtLoginUsername.TabIndex = 6;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(512, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(99, 74);
+            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grdLogin);
             this.Controls.Add(this.grdCreateAccount);
             this.Controls.Add(this.btnDisplayLogin);
@@ -215,6 +227,7 @@
             this.grdCreateAccount.PerformLayout();
             this.grdLogin.ResumeLayout(false);
             this.grdLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +250,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtLoginPassword;
         private System.Windows.Forms.TextBox txtLoginUsername;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

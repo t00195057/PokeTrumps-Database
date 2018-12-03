@@ -244,7 +244,7 @@ namespace Poketrumps
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LoadPokemonImage", pokemonNameParameter);
         }
     
-        public virtual ObjectResult<Nullable<short>> Login(string tName, string password)
+        public virtual int Login(string tName, string password)
         {
             var tNameParameter = tName != null ?
                 new ObjectParameter("TName", tName) :
@@ -254,7 +254,7 @@ namespace Poketrumps
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<short>>("Login", tNameParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Login", tNameParameter, passwordParameter);
         }
     
         public virtual int maxFavourites(Nullable<int> trainerID)

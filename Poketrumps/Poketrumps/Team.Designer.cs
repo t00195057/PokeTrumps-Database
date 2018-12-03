@@ -33,6 +33,7 @@
             this.grdTeam = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btnBattle = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTeam)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(897, 12);
+            this.txtID.Location = new System.Drawing.Point(808, 17);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 2;
@@ -84,11 +85,22 @@
             this.btnBattle.UseVisualStyleBackColor = true;
             this.btnBattle.Click += new System.EventHandler(this.btnBattle_Click);
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(1046, 17);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 12;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // Team
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 714);
+            this.ClientSize = new System.Drawing.Size(1145, 714);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnBattle);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdTeam);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.DataGridView grdTeam;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnBattle;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

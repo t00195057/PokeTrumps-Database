@@ -35,6 +35,9 @@
             this.btnChoosePokemon = new System.Windows.Forms.Button();
             this.txtBattleID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtRound = new System.Windows.Forms.TextBox();
+            this.lblRound = new System.Windows.Forms.Label();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdAiTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTrainerTeam)).BeginInit();
             this.SuspendLayout();
@@ -105,11 +108,43 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "battle ID";
             // 
+            // txtRound
+            // 
+            this.txtRound.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.txtRound.Location = new System.Drawing.Point(735, 24);
+            this.txtRound.Name = "txtRound";
+            this.txtRound.ReadOnly = true;
+            this.txtRound.Size = new System.Drawing.Size(100, 20);
+            this.txtRound.TabIndex = 9;
+            this.txtRound.Text = "1";
+            // 
+            // lblRound
+            // 
+            this.lblRound.AutoSize = true;
+            this.lblRound.Location = new System.Drawing.Point(652, 27);
+            this.lblRound.Name = "lblRound";
+            this.lblRound.Size = new System.Drawing.Size(77, 13);
+            this.lblRound.TabIndex = 10;
+            this.lblRound.Text = "Round number";
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(1057, 27);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 11;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // battlePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 753);
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.lblRound);
+            this.Controls.Add(this.txtRound);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBattleID);
             this.Controls.Add(this.btnChoosePokemon);
@@ -134,5 +169,8 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView grdAiTeam;
         public System.Windows.Forms.DataGridView grdTrainerTeam;
+        private System.Windows.Forms.TextBox txtRound;
+        private System.Windows.Forms.Label lblRound;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

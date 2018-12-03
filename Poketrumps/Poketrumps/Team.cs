@@ -59,5 +59,14 @@ namespace Poketrumps
             form2.Show();
 
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new Form1();
+
+            form.Closed += (s, args) => this.Close();
+            form.Show();
+        }
     }
 }
