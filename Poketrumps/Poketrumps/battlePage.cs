@@ -62,16 +62,23 @@ namespace Poketrumps
         {
             if (grdTrainerTeam.CurrentCell != null)
             {
-                short AIPok = Convert.ToInt16(grdAiTeam.Rows[0].Cells[0].Value);
+                short AIPok = Convert.ToInt16(grdAiTeam.Rows[Convert.ToInt16(txtRound.Text)-1].Cells[0].Value);
                 short TrainerPok = Convert.ToInt16(grdTrainerTeam.Rows[grdTrainerTeam.CurrentCell.RowIndex].Cells[0].Value);
-            
+
+              
+
+               
+
             using (PokemonEntities5 context = new PokemonEntities5())
             {
-                context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
-                context.SaveChanges();
+
+               
             
-           
-       
+                        context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
+                        context.SaveChanges();
+                   
+                    
+             
                 int cell = (grdTrainerTeam.CurrentCell.RowIndex);
                 grdTrainerTeam.CurrentCell = null;
                 grdAiTeam.CurrentCell = null;
@@ -79,8 +86,9 @@ namespace Poketrumps
                 txtRound.Text = Convert.ToString(Convert.ToInt16(txtRound.Text) + 1);
                 grdTrainerTeam.Rows[cell].Visible = false;
                     var trainerID = Convert.ToInt16(txt.Text);
-                    var BattleID = Convert.ToInt16(txtBattleID.Text);
                     var AiID = Convert.ToInt16(txtAI.Text);
+                    var BattleID = Convert.ToInt16(txtBattleID.Text);
+                   
                     var TrainerScore = context.Rounds
                     .Where(t => t.WinnerID == trainerID && t.BattleID == BattleID)
                     .Select(t => new { t.RoundID }).Count();
@@ -93,8 +101,8 @@ namespace Poketrumps
             {
 
                 
-                    context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
-                    context.SaveChanges();
+                    
+           
                 
                 MessageBox.Show("game over");
 
