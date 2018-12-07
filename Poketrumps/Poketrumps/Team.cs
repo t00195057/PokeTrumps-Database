@@ -24,6 +24,11 @@ namespace Poketrumps
                 grdCollection.DataSource = context.getCollection(TrainerID);
                 if(grdCollection.Rows.Count>=2)
                 grdCollection.Rows[0].Cells[0].Selected = false;
+                if (grdCollection.RowCount == 0)
+                {
+                    grdCollection.Visible = false;
+                    button1.Visible = false;
+                }
             }
         }
 

@@ -65,20 +65,11 @@ namespace Poketrumps
                 short AIPok = Convert.ToInt16(grdAiTeam.Rows[Convert.ToInt16(txtRound.Text)-1].Cells[0].Value);
                 short TrainerPok = Convert.ToInt16(grdTrainerTeam.Rows[grdTrainerTeam.CurrentCell.RowIndex].Cells[0].Value);
 
-              
-
-               
-
-            using (PokemonEntities5 context = new PokemonEntities5())
+            using(PokemonEntities5 context = new PokemonEntities5())
             {
-
-               
-            
-                        context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
+                       context.initiateRound(Convert.ToInt16(txt.Text), Convert.ToInt16(txtAI.Text), Convert.ToInt16(txtBattleID.Text), TrainerPok, AIPok);
                         context.SaveChanges();
-                   
-                    
-             
+                              
                 int cell = (grdTrainerTeam.CurrentCell.RowIndex);
                 grdTrainerTeam.CurrentCell = null;
                 grdAiTeam.CurrentCell = null;
@@ -97,13 +88,7 @@ namespace Poketrumps
                   .Where(t => t.WinnerID == AiID && t.BattleID == BattleID)
                   .Select(t => new { t.RoundID }).Count();
 
-                    if ( TrainerScore>=3|| AiScore>= 3|| Convert.ToInt16(txtRound.Text) > 5)
-            {
-
-                
-                    
-           
-                
+                    if ( TrainerScore>=3|| AiScore>= 3|| Convert.ToInt16(txtRound.Text) > 5){ 
                 MessageBox.Show("game over");
 
                 if(TrainerScore>= 3)
